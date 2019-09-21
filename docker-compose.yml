@@ -1,0 +1,23 @@
+
+nginx:
+  build: ./nginx
+  links:
+    - server-1
+    - server-2
+  ports:
+   - "3050:80"
+
+server-1:
+  build: ./server
+  expose:
+    - "3000"
+  environment:
+    - NAME=1
+
+server-2:
+  build: ./server
+  expose:
+    - "3000"
+  environment:
+    - NAME=2
+
